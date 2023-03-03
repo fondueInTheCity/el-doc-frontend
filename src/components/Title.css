@@ -1,0 +1,85 @@
+/* .Title {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    padding: 1em;
+    margin-bottom: 2em;
+    background-color: rgb(192, 45, 26);
+    color: #fff;
+}
+
+.Title-Subtitle {
+    color: rgba(255, 255, 255, 0.75);
+} */
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/**
+ * Limit the container in
+ * width for big screens
+ */
+.container {
+	width: 960px;
+	max-width: 100%;
+	padding: 20px;
+	margin: 0 auto;
+}
+
+/**
+ * By using display: flex
+ * Logo and nav are in 2 cols
+ * align-items make them
+ * vertically centered
+ * justify-content distribute
+ * horizontal spaces around
+ * and flex-wrap break the
+ * things in two lines in
+ * small screens
+ */
+.main-header .container {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+/**
+ * The followings are to
+ * make things more
+ * clean and airy
+ * and contents centered
+ */
+.main-nav ul {
+	margin: 1em 0 .5em;
+	text-align: center;
+}
+.main-nav li {
+	display: inline;
+}
+.main-nav a {
+	display: inline-block;
+	padding: .5em 1.5em;
+}
+
+@media (min-width: 960px) {
+	.main-header .container {
+		justify-content: space-between;
+	}
+}
+
+.signOutButton {
+    float: right;
+    margin: 5px 10px 0px 3px;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+    background-color: #367af6;
+    cursor: pointer;
+  }
