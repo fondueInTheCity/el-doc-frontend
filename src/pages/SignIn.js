@@ -4,6 +4,8 @@ import { auth, signIn } from '../firebase/Firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import {
   Container,
+  FormContainer,
+  ImageContainer,
   Title,
   Label,
   Button,
@@ -32,23 +34,26 @@ const SignIn = () => {
 
   return (
     <Container>
-      <Title>FunDoc</Title>
-      <Button onClick={navigateToSignUp}>Sign up</Button>
-      <Label>Email Address</Label>
-      <Input
-        type='text'
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder='Email'
-      />
-      <Label>Password</Label>
-      <Input
-        type='password'
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder='Password'
-      />
-      <Button onClick={completeSignIn}>Sign In</Button>
+      <FormContainer>
+        <Title>FunDoc</Title>
+        <Label>Email Address</Label>
+        <Input
+          type='text'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder='Email'
+        />
+        <Label>Password</Label>
+        <Input
+          type='password'
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder='Password'
+        />
+        <Button onClick={completeSignIn}>Sign In</Button>
+        <Button onClick={navigateToSignUp}>Sign up</Button>
+      </FormContainer>
+      <ImageContainer />
     </Container>
   )
 }

@@ -1,55 +1,55 @@
 import styled from 'styled-components'
+import colors from '../constants/colors'
 
 export const Container = styled.div`
   display: flex;
+  flex-direction: row;
+  height: 100%;
+`
+
+export const FormContainer = styled.div`
+  display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+`
+export const ImageContainer = styled.div`
+  background-image: url('/images/login_fon.jpg');
+  width: 50%;
 `
 
 export const Title = styled.div`
-  color: #fff;
-  display: flex;
-  font-size: 40px;
-  font-weight: bold;
-  white-space: nowrap;
-  flex-direction: column;
-  margin-bottom: 1em;
+  color: ${colors.white};
+  margin-bottom: 40px;
 `
 
 export const Button = styled.button`
-  color: #f9fd6d;
-  background-color: #16202a;
-  font-size: 20px;
-  font-weight: bold;
-  white-space: nowrap;
-  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: ${colors.white};
+  background-color: ${colors.black};
   border-radius: 45px;
-  border-color: #f9fd6d;
+  border-color: ${colors.white};
   box-sizing: border-box;
   width: 50%;
-  align-items: center;
-  display: flex;
   height: 55px;
-  justify-content: center;
-  margin-bottom: 1em;
+  margin-bottom: 3px;
   cursor: pointer;
 `
 
 export const Label = styled.label`
-  color: #fff;
-  font-size: 15px;
-  font-weight: 500;
-  flex-direction: column;
+  color: ${colors.white};
 `
 
 export const Input = styled.input`
   color: #6b6b6b;
-  font-size: 14px;
   height: 55px;
-  font-weight: 500;
-  flex-direction: column;
   border-radius: 45px;
   box-sizing: border-box;
   width: 50%;
-  margin-bottom: 1em;
+  margin-bottom: 10px;
 `

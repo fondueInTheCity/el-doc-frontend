@@ -3,6 +3,8 @@ import { signUp } from '../firebase/Firebase'
 import { useNavigate } from 'react-router-dom'
 import {
   Container,
+  FormContainer,
+  ImageContainer,
   Title,
   Label,
   Button,
@@ -20,36 +22,39 @@ const SignUp = () => {
   }
 
   const navigateToSignIn = () => {
-    navigate('/login')
+    navigate('/signin')
   }
 
   return (
     <Container>
-      <Title>FunDoc</Title>
-      <Label>Full Name</Label>
-      <Input
-        type='text'
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder='Full Name'
-      />
-      <Label>Email</Label>
-      <Input
-        type='text'
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder='Email'
-      />
-      <Label>Password</Label>
-      <Input
-        type='password'
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder='Password'
-      />
-      <Button onClick={completeSignUp}>Sign Up</Button>
-      <Title>Already on FunDoc?</Title>
-      <Button onClick={navigateToSignIn}>Click to Sign In</Button>
+      <FormContainer>
+        <Title>FunDoc</Title>
+        <Label>Full Name</Label>
+        <Input
+          type='text'
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder='Full Name'
+        />
+        <Label>Email</Label>
+        <Input
+          type='text'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder='Email'
+        />
+        <Label>Password</Label>
+        <Input
+          type='password'
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder='Password'
+        />
+        <Button onClick={completeSignUp}>Sign Up</Button>
+        <Title>Already on FunDoc?</Title>
+        <Button onClick={navigateToSignIn}>Click to Sign In</Button>
+      </FormContainer>
+      <ImageContainer />
     </Container>
   )
 }
