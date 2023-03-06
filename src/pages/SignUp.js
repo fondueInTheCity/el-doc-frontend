@@ -19,6 +19,7 @@ const SignUp = () => {
 
   const completeSignUp = () => {
     signUp(name, email, password)
+    navigateToSignIn()
   }
 
   const navigateToSignIn = () => {

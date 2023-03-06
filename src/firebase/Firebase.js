@@ -6,8 +6,9 @@ import {
   signOut,
   updateProfile,
 } from 'firebase/auth'
-import axios from 'axios'
 import { getFirestore, collection, addDoc } from 'firebase/firestore'
+import { addNewUser } from '../api/UserApi'
+
 const firebaseConfig = {
   apiKey: 'AIzaSyD0ujeTPJBJU5ZZXIaLGwFAooXNg_S40dU',
   authDomain: 'el-doc-c418a.firebaseapp.com',
@@ -20,6 +21,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)
 const db = getFirestore(app)
+
 const signIn = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password)
@@ -27,18 +29,6 @@ const signIn = async (email, password) => {
     console.error(err)
     alert(err.message)
   }
-}
-
-const createUser = async (email, password) => {
-  const baseURL = 'http://localhost:3000/api/users'
-  axios
-    .post(baseURL, {
-      email: email,
-      password: password,
-    })
-    .then((response) => {
-      console.log(response)
-    })
 }
 
 const signUp = async (name, email, password) => {
@@ -52,13 +42,15 @@ const signUp = async (name, email, password) => {
       authProvider: 'local',
       email,
     })
-    await createUser(email, password)
+    addNewUser(user.uid, name, email)
   } catch (err) {
     console.error(err)
     alert(err.message)
   }
 }
+
 const logOut = () => {
   signOut(auth)
 }
+
 export { auth, db, signIn, signUp, logOut }

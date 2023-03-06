@@ -1,38 +1,15 @@
+/* eslint-disable prettier/prettier */
 import '../App.css'
+import '../components/CardContent.css'
+import Header from '../components/Header'
+import BasicDropzone from '../components/BasicDropzone'
 
 const WorkDictionary = () => {
   return (
-    <>
-      <main>
-        <div>
-          <h1>rir</h1>
-        </div>
-        <div>
-          <h1>rir</h1>
-        </div>
-        <div>
-          <h1>rir</h1>
-        </div>
-        <div>
-          <h1>rir</h1>
-        </div>
-        <div>
-          <h1>rir</h1>
-        </div>
-        <div>
-          <h1>rir</h1>
-        </div>
-        <div>
-          <h1>rir</h1>
-        </div>
-        <div>
-          <h1>rir</h1>
-        </div>
-        <div>
-          <h1>rir</h1>
-        </div>
-      </main>
-    </>
+      <>
+        <Header />
+        <BasicDropzone />
+      </>
   )
 }
 
