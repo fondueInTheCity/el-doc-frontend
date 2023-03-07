@@ -35,7 +35,7 @@ const SignIn = () => {
   return (
     <Container>
       <FormContainer>
-        <Title>FunDoc</Title>
+        <Title>Log In to FunDoc</Title>
         <Label>Email Address</Label>
         <Input
           type='text'

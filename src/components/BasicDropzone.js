@@ -1,5 +1,7 @@
 import { useDropzone } from 'react-dropzone'
+import { useEffect } from 'react'
 import CardContainer from '../components/CardContainer'
+import { uploadFile } from '../api/FileApi'
 
 function BasicDropzone() {
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone()
@@ -10,6 +12,13 @@ function BasicDropzone() {
       {file.path} - {file.size} bytes
     </li>
   ))
+
+  useEffect(() => {
+    const formData = new FormData()
+    formData.append('ownerUid', 11)
+    formData.append('file', acceptedFiles[0])
+    uploadFile(formData)
+  }, [acceptedFiles])
 
   return (
     <section className='container'>
