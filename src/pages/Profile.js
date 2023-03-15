@@ -1,69 +1,76 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { auth } from '../firebase/Firebase.js'
 import Header from '../components/Header'
-import styled from 'styled-components'
 import ElementMaker from '../components/ElementMaker.js'
+import {
+  Button,
+  Container,
+  ImageContainer,
+  UserInfoContainer,
+} from '../styles/UserProfileStyle'
+import { getUserInfo, updateUserInfo } from '../api/UserApi.js'
 
-export default function Profile() {
-  const [user, setUser] = useState({})
-  const [fullName, setFullName] = useState('df')
+const Profile = () => {
+  const [userInfo, setUserInfo] = useState({
+    id: 'hbjh',
+    email: 'jnjn',
+    fullName: 'dfdfd',
+  })
+
+  const handleClick = (e) => {
+    const { name, value } = e.target
+    setUserInfo((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }))
+  }
   const [showInputEle, setShowInputEle] = useState(false)
 
-  const getCurrentUserInfo = async () => {
-    console.log(auth.currentUser)
-    const baseURL = `http://localhost:3000/api/users/${auth.currentUser.uid}`
-    axios.get(baseURL).then((response) => {
-      console.log(response)
-      setUser(response.data[0])
+  // eslint-disable-next-line no-unused-vars
+  const getCurrentUserInfo = async (currentUid) => {
+    getUserInfo(currentUid).then((response) => {
+      setUserInfo(response.data[0])
     })
   }
 
   useEffect(() => {
-    getCurrentUserInfo()
+    console.log(auth.currentUser)
+    getCurrentUserInfo(auth.currentUser.uid)
   }, [])
 
   return (
     <>
       <Header />
       <Container>
-        <ImageContainer>
-          <img
-            src='https://i.imgur.com/yXOvdOSs.jpg'
-            alt='Hedy Lamarr'
-            className='photo'
-          />
-        </ImageContainer>
+        <ImageContainer src='/images/pdf.png' />
         <UserInfoContainer>
-          <h1>Id: {user.id}</h1>
-          <h2>Email: {user.email}</h2>
-          <h2>Name: {user.name}</h2>
-          <strong>Full Name: </strong>
-          {/* Invoke the ElementMaker component with some attributes */}
+          <h1>Id: {userInfo.uid}</h1>
+          <strong>Email: </strong>
           <ElementMaker
-            value={fullName}
-            handleChange={(e) => setFullName(e.target.value)}
+            value={userInfo.email}
+            handleChange={handleClick}
+            name={'email'}
             handleDoubleClick={() => setShowInputEle(true)}
             handleBlur={() => setShowInputEle(false)}
             showInputEle={showInputEle}
           />
+          <strong>Full Name: </strong>
+          {/* Invoke the ElementMaker component with some attributes */}
+          <ElementMaker
+            value={userInfo.fullName}
+            handleChange={handleClick}
+            name={'fullName'}
+            handleDoubleClick={() => setShowInputEle(true)}
+            handleBlur={() => setShowInputEle(false)}
+            showInputEle={showInputEle}
+          />
+          <Button onClick={updateUserInfo(userInfo)}>Update User Info</Button>
         </UserInfoContainer>
       </Container>
     </>
   )
 }
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-
-  height: 100%;
-`
-
-const ImageContainer = styled.div`
-  display: flex;
-
-  width: 30%;
-`
-
-const UserInfoContainer = styled.div``
+export default Profile

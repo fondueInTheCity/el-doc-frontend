@@ -10,13 +10,23 @@ import {
   Label,
   Button,
   Input,
-} from '../components/AuthCommon'
+} from '../styles/AuthStyle'
 
 const SignIn = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [user, ,] = useAuthState(auth)
+  const [signInState, setSignInState] = useState({
+    email: '',
+    password: '',
+  })
+  const [user] = useAuthState(auth)
   const navigate = useNavigate()
+
+  const handleClick = (e) => {
+    const { name, value } = e.target
+    setSignInState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }))
+  }
 
   useEffect(() => {
     if (user) {
@@ -29,7 +39,7 @@ const SignIn = () => {
   }
 
   const completeSignIn = () => {
-    signIn(email, password)
+    signIn(signInState)
   }
 
   return (
@@ -38,22 +48,24 @@ const SignIn = () => {
         <Title>Log In to FunDoc</Title>
         <Label>Email Address</Label>
         <Input
+          name='email'
           type='text'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={signInState.email}
+          onChange={handleClick}
           placeholder='Email'
         />
         <Label>Password</Label>
         <Input
+          name='password'
           type='password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={signInState.password}
+          onChange={handleClick}
           placeholder='Password'
         />
         <Button onClick={completeSignIn}>Sign In</Button>
         <Button onClick={navigateToSignUp}>Sign up</Button>
       </FormContainer>
-      <ImageContainer />
+      <ImageContainer src='/images/pdf.png' />
     </Container>
   )
 }

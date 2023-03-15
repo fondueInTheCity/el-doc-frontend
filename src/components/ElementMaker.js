@@ -7,6 +7,7 @@ function ElementMaker(props) {
           value={props.value}
           onChange={props.handleChange}
           onBlur={props.handleBlur}
+          name={props.name}
           autoFocus
         />
       ) : (

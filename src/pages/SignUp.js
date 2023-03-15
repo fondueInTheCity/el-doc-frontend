@@ -9,16 +9,26 @@ import {
   Label,
   Button,
   Input,
-} from '../components/AuthCommon'
+} from '../styles/AuthStyle'
 
 const SignUp = () => {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [userInfo, setUserInfo] = useState({
+    name: '',
+    email: '',
+    password: '',
+  })
   const navigate = useNavigate()
 
+  const handleClick = (e) => {
+    const { name, value } = e.target
+    setUserInfo((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }))
+  }
+
   const completeSignUp = () => {
-    signUp(name, email, password)
+    signUp(signUp)
     navigateToSignIn()
   }
 
@@ -32,30 +42,33 @@ const SignUp = () => {
         <Title>FunDoc</Title>
         <Label>Full Name</Label>
         <Input
+          name='name'
           type='text'
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={userInfo.name}
+          onChange={handleClick}
           placeholder='Full Name'
         />
         <Label>Email</Label>
         <Input
+          name='email'
           type='text'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={userInfo.email}
+          onChange={handleClick}
           placeholder='Email'
         />
         <Label>Password</Label>
         <Input
+          name='password'
           type='password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={userInfo.password}
+          onChange={handleClick}
           placeholder='Password'
         />
         <Button onClick={completeSignUp}>Sign Up</Button>
         <Title>Already on FunDoc?</Title>
         <Button onClick={navigateToSignIn}>Click to Sign In</Button>
       </FormContainer>
-      <ImageContainer />
+      <ImageContainer src='/images/pdf.png' />
     </Container>
   )
 }

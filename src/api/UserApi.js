@@ -14,4 +14,14 @@ const addNewUser = (uid, name, email) => {
     })
 }
 
-export { addNewUser }
+const getUserInfo = (uid) => {
+  return axios.get(baseURL + '/' + uid)
+}
+
+const updateUserInfo = (userInfo) => {
+  axios.post(baseURL, userInfo).then((response) => {
+    console.log(response)
+  })
+}
+
+export { addNewUser, getUserInfo, updateUserInfo }

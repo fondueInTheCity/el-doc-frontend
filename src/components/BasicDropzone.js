@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useDropzone } from 'react-dropzone'
 import { useEffect } from 'react'
 import CardContainer from '../components/CardContainer'
@@ -14,10 +15,12 @@ function BasicDropzone() {
   ))
 
   useEffect(() => {
-    const formData = new FormData()
-    formData.append('ownerUid', 11)
-    formData.append('file', acceptedFiles[0])
-    uploadFile(formData)
+    if (acceptedFiles.length > 0) {
+      const formData = new FormData()
+      formData.append('ownerUid', 11)
+      formData.append('file', acceptedFiles[0])
+      uploadFile(formData)
+    }
   }, [acceptedFiles])
 
   return (

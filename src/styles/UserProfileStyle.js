@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import colors from '../constants/colors'
+import colors from './../constants/colors'
 
 export const Container = styled.div`
   display: flex;
@@ -7,12 +7,20 @@ export const Container = styled.div`
 
   height: 100%;
   @media screen and (max-width: 600px) {
-    display: flex;
     flex-direction: column-reverse;
   }
 `
 
-export const FormContainer = styled.div`
+export const ImageContainer = styled.img`
+  border-radius: 50%;
+  width: 20%;
+  height: 30%;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+`
+
+export const UserInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,21 +30,7 @@ export const FormContainer = styled.div`
   width: 50%;
   @media screen and (max-width: 600px) {
     width: 100%;
-    height: 274px;
   }
-`
-export const ImageContainer = styled.div`
-  background-image: url('/images/login_fon.jpg');
-  width: 50%;
-  @media screen and (max-width: 600px) {
-    width: 100%;
-    height: 900px;
-  }
-`
-
-export const Title = styled.div`
-  color: ${colors.white};
-  margin-bottom: 40px;
 `
 
 export const Button = styled.button`
@@ -52,18 +46,4 @@ export const Button = styled.button`
   height: 55px;
   margin-bottom: 20px;
   cursor: pointer;
-`
-
-export const Label = styled.label`
-  color: ${colors.yellow};
-`
-
-export const Input = styled.input`
-  border-radius: 45px;
-  border-color: ${colors.white};
-  background-color: ${colors.backgroundColor};
-  margin-bottom: 10px;
-  height: 55px;
-  width: 50%;
-  color: ${colors.yellow};
 `
