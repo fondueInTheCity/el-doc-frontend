@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { signUp } from '../firebase/Firebase'
 import { useNavigate } from 'react-router-dom'
+import AuthService from '../services/auth.service'
 import {
   Container,
   FormContainer,
@@ -9,7 +9,7 @@ import {
   Label,
   Button,
   Input,
-} from '../styles/AuthStyle'
+} from './SignIn'
 
 const SignUp = () => {
   const [userInfo, setUserInfo] = useState({
@@ -28,7 +28,7 @@ const SignUp = () => {
   }
 
   const completeSignUp = () => {
-    signUp(signUp)
+    AuthService.signUp(userInfo)
     navigateToSignIn()
   }
 
@@ -68,7 +68,9 @@ const SignUp = () => {
         <Title>Already on FunDoc?</Title>
         <Button onClick={navigateToSignIn}>Click to Sign In</Button>
       </FormContainer>
-      <ImageContainer src='/images/pdf.png' />
+      <ImageContainer>
+        <img src='/images/pdf.png' />
+      </ImageContainer>
     </Container>
   )
 }

@@ -24,11 +24,16 @@ const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem('user'))
 }
 
+const isAuthenticated = () => {
+  return getCurrentUser() != null
+}
+
 const AuthService = {
   signUp,
   signIn,
   logout,
   getCurrentUser,
+  isAuthenticated,
 }
 
 export default AuthService
