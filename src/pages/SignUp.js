@@ -9,6 +9,7 @@ import {
   Label,
   Button,
   Input,
+  LinkText,
 } from './SignIn'
 
 const SignUp = () => {
@@ -65,11 +66,10 @@ const SignUp = () => {
           placeholder='Password'
         />
         <Button onClick={completeSignUp}>Sign Up</Button>
-        <Title>Already on FunDoc?</Title>
-        <Button onClick={navigateToSignIn}>Click to Sign In</Button>
+        <LinkText to='/signin'>Already on FunDoc? Sign in</LinkText>
       </FormContainer>
       <ImageContainer>
-        <img src='/images/pdf.png' />
+        <img src='/images/pngegg.png' />
       </ImageContainer>
     </Container>
   )

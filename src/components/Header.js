@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import { NavLink } from 'react-router-dom'
 import AuthService from '../services/auth.service'
 import styled from 'styled-components'
@@ -7,77 +8,64 @@ const Header = () => {
   const isAuthenticated = AuthService.isAuthenticated()
 
   return (
-    <header className='main-header'>
-      <Container>
-        <h1 className='mh-Slogo'>
-          <ImageContainer
-            src='http://flexbox.ninja/assets/images/logo.svg'
-            width='170'
-            height='95'
-            alt='Flexbox.ninja'
-          />
-        </h1>
-        {isAuthenticated && (
-          <NavigationContainer className='main-nav'>
-            <ul className='main-nav-list'>
-              <li>
-                <NavLink to='/profile'>Profile</NavLink>
-              </li>
-              <li>
-                <NavLink to='/'>Work Directory</NavLink>
-              </li>
-              <li>
-                <SignOutButton>Sign Out</SignOutButton>
-              </li>
-            </ul>
-          </NavigationContainer>
-        )}
-      </Container>
-    </header>
+    <Container>
+      <Logo>FunDoc</Logo>
+      {isAuthenticated && (
+        <NavigationContainer>
+          <NavigationItem>
+            <NavLink to='/profile'>Profile</NavLink>
+          </NavigationItem>
+          <NavigationItem>
+            <NavLink to='/'>Work Directory</NavLink>
+          </NavigationItem>
+          <NavigationItem>
+            <NavLink to='/signin'>Sign Out</NavLink>
+          </NavigationItem>
+        </NavigationContainer>
+      )}
+    </Container>
   )
 }
 
-const Container = styled.div`
+const Container = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
+
+  background-color: ${colors.white};
+  border-bottom: 1px solid #ccc;
 `
 
-const ImageContainer = styled.img`
-  max-width: 100%;
-  height: auto;
+const Logo = styled.div`
+  color: ${colors.black};
 `
 
-const NavigationContainer = styled.nav`
-  ul {
-    margin: 1em 0 0.5em;
-    text-align: center;
-  }
-  li {
-    display: inline;
-  }
+const NavigationContainer = styled.ul`
+  text-align: center;
+  margin: 0;
+`
+
+const NavigationItem = styled.li`
+  display: inline-block;
+  padding: 0 7px;
   a {
-    display: inline-block;
+    display: block;
     padding: 0.5em 1.5em;
-    color: ${colors.yellow};
+    color: ${colors.black};
+    border-bottom: 1px solid transparent;
+    text-decoration: none;
+    height: 16px;
+    padding: 22px 0 21px;
     :visited {
-      color: ${colors.yellow};
+      color: ${colors.black};
+    }
+    :hover {
+      border-bottom-color: ${colors.black};
+    }
+    :active {
+      border-bottom-color: ${colors.black};
     }
   }
 `
-
-const SignOutButton = styled.button`
-  color: ${colors.yellow};
-  border-radius: 45px;
-  border-color: ${colors.yellow};
-  background-color: ${colors.backgroundColor};
-  margin-bottom: 20px;
-  cursor: pointer;
-  :hover {
-    background: ${colors.yellow};
-    color: ${colors.backgroundColor};
-  }
-`
-
 export default Header

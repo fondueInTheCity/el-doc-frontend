@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import colors from './../../constants/colors'
 
 const TabNavItem = ({ id, title, activeTab, setActiveTab }) => {
   const handleClick = () => {
@@ -21,12 +22,13 @@ const NavTabItem = styled.li`
   text-align: center;
   cursor: pointer;
   transition: all 0.7s;
+  border-bottom: 1px solid transparent;
   width: auto;
   :hover {
-    background: rgba(50, 224, 196, 0.15);
+    border-bottom-color: ${colors.black};
   }
-  .active {
-    background: '#39A2DB';
+  &.active {
+    border-bottom-color: ${colors.black};
   }
 `
 

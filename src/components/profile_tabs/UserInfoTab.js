@@ -53,6 +53,7 @@ const UserInfoTab = () => {
           onChange={handleClick}
           name={'email'}
           disabled={isDisabled}
+          placeholder='Email'
         />
         <Label>Full Name: </Label>
         <Input
@@ -61,6 +62,7 @@ const UserInfoTab = () => {
           onChange={handleClick}
           name={'name'}
           disabled={isDisabled}
+          placeholder='Name'
         />
         {isDisabled && (
           <Button onClick={inverseDisabled}>Update User Info</Button>
@@ -105,8 +107,8 @@ const UserInfoContainer = styled.div`
   }
 `
 
-export const Title = styled.div`
-  color: ${colors.white};
+export const Title = styled.h2`
+  color: ${colors.black};
   margin-bottom: 40px;
 `
 
@@ -115,31 +117,33 @@ export const Button = styled.button`
   align-items: center;
   justify-content: center;
 
-  color: ${colors.yellow};
-  border-radius: 45px;
-  border-color: ${colors.yellow};
+  color: ${colors.black};
+  border-color: ${colors.black};
   background-color: ${colors.backgroundColor};
   width: 50%;
   height: 55px;
   margin-bottom: 20px;
   cursor: pointer;
   :hover {
-    background: ${colors.yellow};
+    background: ${colors.black};
     color: ${colors.backgroundColor};
   }
 `
 
 export const Label = styled.label`
-  color: ${colors.yellow};
+  color: ${colors.black};
 `
 
 export const Input = styled.input`
-  border-radius: 45px;
-  border-color: ${colors.yellow};
   margin-bottom: 10px;
   height: 55px;
   width: 50%;
   color: ${colors.black};
+  background-color: ${colors.white};
+  padding: 0px 3%;
+  ::placeholder {
+    color: ${colors.gray};
+  }
 `
 
 export default UserInfoTab

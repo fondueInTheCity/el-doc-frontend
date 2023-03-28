@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'http://localhost:3000/api/files'
+const baseURL = 'http://localhost:3000/api/files/'
 
 const uploadFile = (formData) => {
   axios.post(baseURL, formData).then((response) => {
@@ -8,4 +8,12 @@ const uploadFile = (formData) => {
   })
 }
 
-export { uploadFile }
+const getCurrentUserFiles = async (id) => {
+  return axios.get(`${baseURL}users/${id}`)
+}
+
+const getFileInfoById = async (id) => {
+  return axios.get(`${baseURL}${id}`)
+}
+
+export { uploadFile, getCurrentUserFiles, getFileInfoById }

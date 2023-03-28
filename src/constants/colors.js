@@ -2,7 +2,9 @@ const colors = {
   black: '#000',
   white: '#fff',
   yellow: '#F9FD6D',
-  backgroundColor: '#1c1c1c',
+  backgroundColor: '#f5f1ee',
+  gray: 'gray',
+  green: '#5ce739',
 }
 
 export default colors
