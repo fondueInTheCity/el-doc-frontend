@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
-import { getFileInfoById } from '../api/FileApi'
+import fileApi from '../api/FileApi'
 import { useState } from 'react'
 import colors from '../constants/colors'
 
@@ -11,7 +11,9 @@ function FileInfo() {
 
   const getFileById = async () => {
     let file
-    await getFileInfoById(pathParams.id).then((res) => (file = res.data))
+    await fileApi
+      .getFileInfoById(pathParams.id)
+      .then((res) => (file = res.data))
     if (file) {
       setFileInfo(file)
     }
@@ -25,10 +27,13 @@ function FileInfo() {
     <Container>
       <h1>{fileInfo?.name}</h1>
       <FileImage src='/images/contract-svgrepo-com.svg' />
-      <h2>{fileInfo?.id}</h2>
+      <h2>Owner: Aizek Dobrush</h2>
       <Button>Download</Button>
-      <Button>Sign</Button>
-      <Button>Not Sign</Button>
+      <Button>Send to sign</Button>
+      <ManipulateContainer>
+        <Button>Sign</Button>
+        <Button>Not Sign</Button>
+      </ManipulateContainer>
     </Container>
   )
 }
@@ -65,6 +70,11 @@ export const Button = styled.button`
   :hover {
     background-color: ${colors.gray};
   }
+`
+
+const ManipulateContainer = styled.div`
+  display: flex;
+  flex-direction: row;
 `
 
 export default FileInfo

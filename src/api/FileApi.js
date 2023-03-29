@@ -16,4 +16,5 @@ const getFileInfoById = async (id) => {
   return axios.get(`${baseURL}${id}`)
 }
 
-export { uploadFile, getCurrentUserFiles, getFileInfoById }
+const fileApi = { uploadFile, getCurrentUserFiles, getFileInfoById }
+export default fileApi

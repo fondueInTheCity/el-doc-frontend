@@ -4,7 +4,7 @@ import colors from '../constants/colors'
 import { useState, useEffect } from 'react'
 import Icon from './Icon'
 
-const Dropdown = ({ menu }) => {
+const Dropdown = ({ menu, name }) => {
   const [open, setOpen] = useState(false)
   const [icon, setIcon] = useState('arrow-right2')
 
@@ -19,7 +19,7 @@ const Dropdown = ({ menu }) => {
   return (
     <Container>
       <StateDropdownButton onClick={handleOpen}>
-        State <Icon color={colors.black} size={10} icon={icon} />
+        {name} <Icon color={colors.black} size={10} icon={icon} />
       </StateDropdownButton>
       {open ? (
         <CheckList>

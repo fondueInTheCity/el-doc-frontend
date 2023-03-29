@@ -18,7 +18,7 @@ const LinkContainer = styled(Link)`
   flex-direction: column;
   padding: 1em;
   margin: 10px;
-  max-height: 200px;
+  min-height: 200px;
 
   text-decoration: none;
 

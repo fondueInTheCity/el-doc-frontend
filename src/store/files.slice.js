@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { getCurrentUserFiles } from '../../api/FileApi'
+import fileApi from '../api/FileApi'
 
 const initialState = {
   files: [],
@@ -22,7 +22,7 @@ const filesSlice = createSlice({
 
 export const getUserFiles = createAsyncThunk(
   'files/getUserFiles',
-  async (id) => await getCurrentUserFiles(id)
+  async (id) => await fileApi.getCurrentUserFiles(id)
 )
 
 export const { fileDeleted, fileAdded } = filesSlice.actions

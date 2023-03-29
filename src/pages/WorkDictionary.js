@@ -1,21 +1,19 @@
 import '../App.css'
-import { useState } from 'react'
-import { useSelector } from 'react-redux'
 import BasicDropzone from '../components/BasicDropzone'
 import CardContent from './../components/CardContent'
 import { useEffect } from 'react'
-import { getUserFiles } from '../helpers/store/files.slice'
-import { store } from '../helpers/store'
+import { getUserFiles } from '../store/files.slice'
+import { store } from '../store'
 import styled from 'styled-components'
 import colors from './../constants/colors'
 import Dropdown from '../components/DropdownCheckbox'
 import Search from './../components/Search'
+import { useSelector } from 'react-redux'
 
 const WorkDictionary = () => {
-  const files = useSelector((x) => x.files.files)
-  const auth = useSelector((x) => x.auth.entity)
+  const userRedux = useSelector((x) => x.auth.entity)
 
-  const [stateFilterOpen, setStateFilterOpen] = useState(false)
+  const filesReducer = useSelector((x) => x.files.files)
 
   const stateSelects = [
     { key: '23', text: 'All' },
@@ -25,36 +23,27 @@ const WorkDictionary = () => {
     { key: '27', text: 'You have to sign' },
   ]
 
-  const handleOpen = () => {
-    setStateFilterOpen(!stateFilterOpen)
-  }
+  const formatSelects = [
+    { key: '13', text: 'All' },
+    { key: '14', text: 'Pdf' },
+    { key: '15', text: 'Doc' },
+  ]
 
   useEffect(() => {
-    store.dispatch(getUserFiles(auth.id))
+    store.dispatch(getUserFiles(userRedux.id))
   }, [])
 
   return (
     <>
       <Container>
-        <Dropdown
-          open={stateFilterOpen}
-          trigger={<button onClick={handleOpen}>State</button>}
-          menu={stateSelects}
-        ></Dropdown>
-        <Dropdown
-          open={stateFilterOpen}
-          trigger={<button onClick={handleOpen}>Options</button>}
-          menu={[
-            { key: '23', text: 'Menu 1' },
-            { key: '24', text: 'Menu 2' },
-          ]}
-        ></Dropdown>
+        <Dropdown menu={stateSelects} name='Format'></Dropdown>
+        <Dropdown menu={formatSelects} name='State'></Dropdown>
         <Search></Search>
       </Container>
       <div>
         <BasicDropzone />
         <CardFlex>
-          {files.map((file, index) => (
+          {filesReducer.map((file, index) => (
             <CardContent fileName={file.name} id={file.id} key={index} />
           ))}
         </CardFlex>
@@ -78,7 +67,6 @@ const CardFlex = styled.div`
   flex-wrap: wrap;
   justify-content: flex-start;
 
-  width: 100%;
   margin: 30px;
 `
 

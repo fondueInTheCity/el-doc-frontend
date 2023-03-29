@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { signIn } from '../../api/AuthApi'
+import AuthApi from '../api/AuthApi'
 
 const initialState = {
   entity: JSON.parse(localStorage.getItem('user')),
@@ -18,14 +18,16 @@ const authSlice = createSlice({
       state.entity = action.payload
 
       localStorage.setItem('user', JSON.stringify(action.payload))
-      console.log(state)
+    })
+    builder.addCase(logout.fulfilled, (state) => {
+      state.entity = null
     })
   },
 })
 
 export const login = createAsyncThunk(
   'auth/login',
-  async (authData) => await signIn(authData)
+  async (authData) => await AuthApi.signIn(authData)
 )
 
 export const logout = createAsyncThunk('auth/logout', async () => {

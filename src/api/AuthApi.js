@@ -15,4 +15,5 @@ const handleResponse = async (response) => {
   return data
 }
 
-export { signIn }
+const authApi = { signIn }
+export default authApi

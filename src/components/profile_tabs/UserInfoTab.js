@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import colors from '../../constants/colors'
-import { getUserInfo } from '../../api/UserApi.js'
+import userApi from '../../api/UserApi.js'
 import AuthService from '../../services/auth.service'
 
 const UserInfoTab = () => {
@@ -21,7 +21,7 @@ const UserInfoTab = () => {
   }
 
   const getCurrentUserInfo = (currentId) => {
-    getUserInfo(currentId).then((response) => {
+    userApi.getUserInfo(currentId).then((response) => {
       setUserInfo(response.data[0])
     })
   }

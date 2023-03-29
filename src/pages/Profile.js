@@ -3,7 +3,6 @@ import TabNavItem from '../components/profile_tabs/TabNavItem'
 import TabContent from '../components/profile_tabs/TabContent'
 import UserInfoTab from '../components/profile_tabs/UserInfoTab'
 import KeysInfoTab from '../components/profile_tabs/KeysInfoTab'
-import OrganizationsInfoTab from '../components/profile_tabs/OrganizationsTab'
 import SettingsTab from '../components/profile_tabs/SettingsTab'
 import styled from 'styled-components'
 import colors from './../constants/colors'
@@ -27,12 +26,6 @@ const Profile = () => {
           setActiveTab={setActiveTab}
         />
         <TabNavItem
-          title='User organizations'
-          id='UserOrganizations'
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-        />
-        <TabNavItem
           title='Settings'
           id='Settings'
           activeTab={activeTab}
@@ -44,9 +37,6 @@ const Profile = () => {
       </TabContent>
       <TabContent id='Keys' activeTab={activeTab}>
         <KeysInfoTab />
-      </TabContent>
-      <TabContent id='UserOrganizations' activeTab={activeTab}>
-        <OrganizationsInfoTab />
       </TabContent>
       <TabContent id='Settings' activeTab={activeTab}>
         <SettingsTab />

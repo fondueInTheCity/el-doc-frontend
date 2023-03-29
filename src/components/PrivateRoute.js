@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux'
 export { PrivateRoute }
 
 function PrivateRoute() {
-  const auth = useSelector((x) => x.auth.entity)
+  const userRedux = useSelector((x) => x.auth.entity)
 
-  if (!auth) {
+  if (!userRedux) {
     return <Navigate to='/signin' />
   }
 

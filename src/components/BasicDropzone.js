@@ -1,29 +1,28 @@
 import { useDropzone } from 'react-dropzone'
 import { useEffect } from 'react'
-import { store } from '../helpers/store'
-import { fileAdded } from '../helpers/store/files.slice'
+import { store } from '../store'
+import { fileAdded } from '../store/files.slice'
 import styled from 'styled-components'
 import colors from './../constants/colors'
+import fileApi from '../api/FileApi'
 import { useSelector } from 'react-redux'
-import { uploadFile } from '../api/FileApi'
 
 function BasicDropzone() {
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone()
-
-  const auth = useSelector((x) => x.auth.entity)
+  const userRedux = useSelector((x) => x.auth.entity)
 
   useEffect(() => {
     if (acceptedFiles.length > 0) {
       const addedFile = acceptedFiles[acceptedFiles.length - 1]
 
-      uploadFile(createFormData(addedFile))
+      fileApi.uploadFile(createFormData(addedFile))
       store.dispatch(fileAdded(addedFile))
     }
   }, [acceptedFiles])
 
   const createFormData = (file) => {
     const formData = new FormData()
-    formData.append('ownerId', auth.id)
+    formData.append('ownerId', userRedux.id)
     formData.append('file', file)
 
     return formData

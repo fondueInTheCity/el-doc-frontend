@@ -3,9 +3,18 @@ import { NavLink } from 'react-router-dom'
 import AuthService from '../services/auth.service'
 import styled from 'styled-components'
 import colors from '../constants/colors'
+import { store } from '../store'
+import { logout } from '../store/auth.slice'
+import { useNavigate } from 'react-router-dom'
 
 const Header = () => {
   const isAuthenticated = AuthService.isAuthenticated()
+
+  const navigate = useNavigate()
+
+  const redirectToSignIn = () => {
+    store.dispatch(logout()).then(() => navigate('/signin'))
+  }
 
   return (
     <Container>
@@ -19,7 +28,9 @@ const Header = () => {
             <NavLink to='/'>Work Directory</NavLink>
           </NavigationItem>
           <NavigationItem>
-            <NavLink to='/signin'>Sign Out</NavLink>
+            <NavLink to='/signin' onClick={redirectToSignIn}>
+              Sign Out
+            </NavLink>
           </NavigationItem>
         </NavigationContainer>
       )}

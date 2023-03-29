@@ -1,15 +1,18 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 import colors from '../constants/colors'
-import { login } from '../helpers/store/auth.slice'
-import { store } from '../helpers/store'
+import { login } from '../store/auth.slice'
+import { store } from '../store'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const SignIn = () => {
   const [signInState, setSignInState] = useState({
     email: '',
     password: '',
   })
+
+  const navigate = useNavigate()
 
   const handleClick = (e) => {
     const { name, value } = e.target
@@ -19,8 +22,8 @@ const SignIn = () => {
     }))
   }
 
-  function onSubmit() {
-    return store.dispatch(login(signInState))
+  const onSubmit = () => {
+    store.dispatch(login(signInState)).then(() => navigate('/'))
   }
 
   return (

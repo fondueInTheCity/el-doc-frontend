@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'http://localhost:3000/api/users'
+const baseURL = 'http://localhost:3000/api/users/'
 
 const addNewUser = (uid, name, email) => {
   axios
@@ -14,8 +14,8 @@ const addNewUser = (uid, name, email) => {
     })
 }
 
-const getUserInfo = (uid) => {
-  return axios.get(baseURL + '/' + uid)
+const getUserInfo = (id) => {
+  return axios.get(`${baseURL}${id}`)
 }
 
 const updateUserInfo = (userInfo) => {
@@ -24,4 +24,5 @@ const updateUserInfo = (userInfo) => {
   })
 }
 
-export { addNewUser, getUserInfo, updateUserInfo }
+const userApi = { addNewUser, getUserInfo, updateUserInfo }
+export default userApi
