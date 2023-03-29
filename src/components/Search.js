@@ -9,7 +9,6 @@ const Search = () => {
   return (
     <div className='pa2'>
       <input
-        className='pa3 bb br3 grow b--none bg-lightest-blue ma3'
         type='search'
         placeholder='Search File Name'
         onChange={handleChange}

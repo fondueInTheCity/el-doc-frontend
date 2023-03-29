@@ -6,9 +6,9 @@ import AuthService from '../../services/auth.service'
 
 const UserInfoTab = () => {
   const [userInfo, setUserInfo] = useState({
-    id: 'hbjh',
-    email: 'jnjn',
-    name: 'dfdfd',
+    id: '',
+    email: '',
+    name: '',
   })
   const [isDisabled, setIsDisabled] = useState(true)
 
@@ -20,8 +20,8 @@ const UserInfoTab = () => {
     }))
   }
 
-  const getCurrentUserInfo = (currentUid) => {
-    getUserInfo(currentUid).then((response) => {
+  const getCurrentUserInfo = (currentId) => {
+    getUserInfo(currentId).then((response) => {
       setUserInfo(response.data[0])
     })
   }
@@ -64,10 +64,9 @@ const UserInfoTab = () => {
           disabled={isDisabled}
           placeholder='Name'
         />
-        {isDisabled && (
+        {isDisabled ? (
           <Button onClick={inverseDisabled}>Update User Info</Button>
-        )}
-        {!isDisabled && (
+        ) : (
           <Button onClick={inverseDisabled}>Confirm updated user Info</Button>
         )}
       </UserInfoContainer>
@@ -79,7 +78,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
 
-  height: 100%;
   @media screen and (max-width: 600px) {
     flex-direction: column;
   }
@@ -111,23 +109,26 @@ const UserInfoContainer = styled.div`
 `
 
 export const Title = styled.h2`
-  color: ${colors.black};
   margin-bottom: 40px;
+
+  color: ${colors.black};
 `
 
 export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 20px;
+  width: 50%;
+  max-width: 150px;
+  height: 55px;
 
   color: ${colors.white};
   border-color: ${colors.black};
   background-color: ${colors.black};
-  width: 50%;
-  max-width: 150px;
-  height: 55px;
-  margin-bottom: 20px;
+
   cursor: pointer;
+
   :hover {
     background: ${colors.gray};
   }
@@ -142,9 +143,11 @@ export const Input = styled.input`
   height: 55px;
   width: 50%;
   max-width: 350px;
+  padding: 0px 3%;
+
   color: ${colors.black};
   background-color: ${colors.white};
-  padding: 0px 3%;
+
   ::placeholder {
     color: ${colors.gray};
   }

@@ -24,17 +24,18 @@ const Label = styled.label`
   padding: 12px;
   margin: 0;
 
-  background-color: white;
+  background-color: ${colors.white};
+
   :hover {
     background-color: ${colors.gray};
   }
   input: {
-    accent-color: #000;
+    accent-color: ${colors.white};
   }
 `
 
 const Input = styled.input`
-  accent-color: #000;
+  accent-color: ${colors.white};
 `
 
 export default Checkbox

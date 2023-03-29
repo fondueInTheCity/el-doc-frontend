@@ -19,7 +19,7 @@ const Dropdown = ({ menu }) => {
   return (
     <Container>
       <StateDropdownButton onClick={handleOpen}>
-        State <Icon color='#000' size={10} icon={icon} />
+        State <Icon color={colors.black} size={10} icon={icon} />
       </StateDropdownButton>
       {open ? (
         <CheckList>
@@ -39,8 +39,10 @@ const Container = styled.div`
 `
 const StateDropdownButton = styled.button`
   padding: 22px 21px;
+
   border: 0;
   background-color: ${colors.white};
+
   cursor: pointer;
 `
 

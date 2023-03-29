@@ -18,12 +18,17 @@ const TabNavItem = ({ id, title, activeTab, setActiveTab }) => {
 
 const NavTabItem = styled.li`
   padding: 1rem;
+  width: auto;
+
   list-style: none;
   text-align: center;
-  cursor: pointer;
-  transition: all 0.7s;
+
   border-bottom: 1px solid transparent;
-  width: auto;
+
+  transition: all 0.7s;
+
+  cursor: pointer;
+
   :hover {
     border-bottom-color: ${colors.black};
   }

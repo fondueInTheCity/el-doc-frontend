@@ -6,53 +6,51 @@ import KeysInfoTab from '../components/profile_tabs/KeysInfoTab'
 import OrganizationsInfoTab from '../components/profile_tabs/OrganizationsTab'
 import SettingsTab from '../components/profile_tabs/SettingsTab'
 import styled from 'styled-components'
+import colors from './../constants/colors'
 
 const Profile = () => {
-  const [activeTab, setActiveTab] = useState('tab1')
+  const [activeTab, setActiveTab] = useState('UserInfo')
 
   return (
     <Container>
       <NavContainer>
         <TabNavItem
           title='User Info'
-          id='tab1'
+          id='UserInfo'
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
         <TabNavItem
           title='Keys'
-          id='tab2'
+          id='Keys'
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
         <TabNavItem
           title='User organizations'
-          id='tab3'
+          id='UserOrganizations'
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
         <TabNavItem
           title='Settings'
-          id='tab4'
+          id='Settings'
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
       </NavContainer>
-
-      <div className='outlet'>
-        <TabContent id='tab1' activeTab={activeTab}>
-          <UserInfoTab />
-        </TabContent>
-        <TabContent id='tab2' activeTab={activeTab}>
-          <KeysInfoTab />
-        </TabContent>
-        <TabContent id='tab3' activeTab={activeTab}>
-          <OrganizationsInfoTab />
-        </TabContent>
-        <TabContent id='tab4' activeTab={activeTab}>
-          <SettingsTab />
-        </TabContent>
-      </div>
+      <TabContent id='UserInfo' activeTab={activeTab}>
+        <UserInfoTab />
+      </TabContent>
+      <TabContent id='Keys' activeTab={activeTab}>
+        <KeysInfoTab />
+      </TabContent>
+      <TabContent id='UserOrganizations' activeTab={activeTab}>
+        <OrganizationsInfoTab />
+      </TabContent>
+      <TabContent id='Settings' activeTab={activeTab}>
+        <SettingsTab />
+      </TabContent>
     </Container>
   )
 }
@@ -60,18 +58,17 @@ const Profile = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-
-  height: 100%;
 `
 
 const NavContainer = styled.ul`
   display: flex;
   justify-content: center;
   flex-direction: row;
-  color: '#E8F0F2';
   flex-wrap: wrap;
   margin: 0;
-  border-bottom: 1px solid #ccc;
+
+  border-bottom: 1px solid ${colors.lightBlack};
+
   @media (max-width: 769px) {
     padding: 2rem 0;
   }

@@ -29,12 +29,7 @@ const SignUp = () => {
   }
 
   const completeSignUp = () => {
-    AuthService.signUp(userInfo)
-    navigateToSignIn()
-  }
-
-  const navigateToSignIn = () => {
-    navigate('/signin')
+    AuthService.signUp(userInfo).then(() => navigate('/signin'))
   }
 
   return (

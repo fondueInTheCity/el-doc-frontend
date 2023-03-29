@@ -14,13 +14,20 @@ function BasicDropzone() {
 
   useEffect(() => {
     if (acceptedFiles.length > 0) {
-      const formData = new FormData()
-      formData.append('ownerId', auth.id)
-      formData.append('file', acceptedFiles[acceptedFiles.length - 1])
-      uploadFile(formData)
-      store.dispatch(fileAdded(acceptedFiles[acceptedFiles.length - 1]))
+      const addedFile = acceptedFiles[acceptedFiles.length - 1]
+
+      uploadFile(createFormData(addedFile))
+      store.dispatch(fileAdded(addedFile))
     }
   }, [acceptedFiles])
+
+  const createFormData = (file) => {
+    const formData = new FormData()
+    formData.append('ownerId', auth.id)
+    formData.append('file', file)
+
+    return formData
+  }
 
   return (
     <DropzoneContainer {...getRootProps({ className: 'dropzone' })}>

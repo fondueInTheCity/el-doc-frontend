@@ -2,8 +2,8 @@ import axios from 'axios'
 
 const API_URL = 'http://localhost:3000/api/auth/'
 
-const signUp = (userInfo) => {
-  return axios.post(API_URL + 'signup', userInfo)
+const signUp = async (userInfo) => {
+  return await axios.post(API_URL + 'signup', userInfo)
 }
 
 const signIn = (signInState) => {
