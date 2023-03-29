@@ -1,6 +1,5 @@
-/* eslint-disable react/no-unknown-property */
 import { NavLink } from 'react-router-dom'
-import AuthService from '../services/auth.service'
+import authApi from '../api/AuthApi'
 import styled from 'styled-components'
 import colors from '../constants/colors'
 import { store } from '../store'
@@ -8,7 +7,7 @@ import { logout } from '../store/auth.slice'
 import { useNavigate } from 'react-router-dom'
 
 const Header = () => {
-  const isAuthenticated = AuthService.isAuthenticated()
+  const isAuthenticated = authApi.isAuthenticated()
 
   const navigate = useNavigate()
 
@@ -22,15 +21,15 @@ const Header = () => {
       {isAuthenticated && (
         <NavigationContainer>
           <NavigationItem>
-            <NavLink to='/profile'>Profile</NavLink>
+            <CustomNavLink to='/profile'>Profile</CustomNavLink>
           </NavigationItem>
           <NavigationItem>
-            <NavLink to='/'>Work Directory</NavLink>
+            <CustomNavLink to='/'>Work Directory</CustomNavLink>
           </NavigationItem>
           <NavigationItem>
-            <NavLink to='/signin' onClick={redirectToSignIn}>
+            <CustomNavLink to='/signin' onClick={redirectToSignIn}>
               Sign Out
-            </NavLink>
+            </CustomNavLink>
           </NavigationItem>
         </NavigationContainer>
       )}
@@ -56,23 +55,22 @@ const NavigationContainer = styled.ul`
 const NavigationItem = styled.li`
   display: inline-block;
   padding: 0 7px;
-  a {
-    display: block;
-    padding: 0.5em 1.5em;
-    color: ${colors.black};
-    border-bottom: 1px solid transparent;
-    text-decoration: none;
-    height: 16px;
-    padding: 22px 0 21px;
-    :visited {
-      color: ${colors.black};
-    }
-    :hover {
-      border-bottom-color: ${colors.black};
-    }
-    &.active {
-      border-bottom-color: ${colors.black};
-    }
+`
+
+const CustomNavLink = styled(NavLink)`
+  display: block;
+  padding: 0.5em 1.5em;
+  color: ${colors.black};
+  border-bottom: 1px solid transparent;
+  text-decoration: none;
+  height: 16px;
+  padding: 22px 0 21px;
+  :hover {
+    border-bottom-color: ${colors.black};
+  }
+  &.active {
+    border-bottom-color: ${colors.black};
   }
 `
+
 export default Header

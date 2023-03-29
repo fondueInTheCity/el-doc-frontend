@@ -59,7 +59,7 @@ const Container = styled.header`
   flex-wrap: wrap;
 
   background-color: ${colors.white};
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid ${colors.black};
 `
 
 const CardFlex = styled.div`

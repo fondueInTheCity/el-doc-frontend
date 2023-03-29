@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import AuthService from '../services/auth.service'
+import authApi from '../api/AuthApi'
 import {
   Container,
   FormContainer,
@@ -29,7 +29,7 @@ const SignUp = () => {
   }
 
   const completeSignUp = () => {
-    AuthService.signUp(userInfo).then(() => navigate('/signin'))
+    authApi.signUp(userInfo).then(() => navigate('/signin'))
   }
 
   return (

@@ -7,7 +7,7 @@ const Search = () => {
     setSearchField(e.target.value)
   }
   return (
-    <div className='pa2'>
+    <div>
       <input
         type='search'
         placeholder='Search File Name'

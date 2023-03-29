@@ -7,10 +7,7 @@ const TabNavItem = ({ id, title, activeTab, setActiveTab }) => {
   }
 
   return (
-    <NavTabItem
-      onClick={handleClick}
-      className={activeTab === id ? 'active' : ''}
-    >
+    <NavTabItem onClick={handleClick} active={activeTab === id}>
       {title}
     </NavTabItem>
   )
@@ -24,15 +21,13 @@ const NavTabItem = styled.li`
   text-align: center;
 
   border-bottom: 1px solid transparent;
+  border-bottom-color: ${({ active }) => (active ? colors.black : 'none')};
 
   transition: all 0.7s;
 
   cursor: pointer;
 
   :hover {
-    border-bottom-color: ${colors.black};
-  }
-  &.active {
     border-bottom-color: ${colors.black};
   }
 `

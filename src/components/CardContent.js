@@ -40,8 +40,6 @@ const LinkContainer = styled(Link)`
 const DocumentImage = styled.img`
   max-width: 100%;
   height: 155px;
-
-  opacity: 1;
 `
 
 const DocumentName = styled.h3`

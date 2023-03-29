@@ -35,6 +35,8 @@ const Dropdown = ({ menu, name }) => {
 }
 
 const Container = styled.div`
+  position: relative;
+
   background-color: ${colors.white};
 `
 const StateDropdownButton = styled.button`

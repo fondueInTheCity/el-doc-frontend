@@ -15,5 +15,17 @@ const handleResponse = async (response) => {
   return data
 }
 
-const authApi = { signIn }
+const logout = () => {
+  localStorage.removeItem('user')
+}
+
+const getCurrentUser = () => {
+  return JSON.parse(localStorage.getItem('user'))
+}
+
+const isAuthenticated = () => {
+  return getCurrentUser() != null
+}
+
+const authApi = { signIn, logout, getCurrentUser, isAuthenticated }
 export default authApi

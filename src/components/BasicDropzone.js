@@ -15,8 +15,9 @@ function BasicDropzone() {
     if (acceptedFiles.length > 0) {
       const addedFile = acceptedFiles[acceptedFiles.length - 1]
 
-      fileApi.uploadFile(createFormData(addedFile))
-      store.dispatch(fileAdded(addedFile))
+      fileApi
+        .uploadFile(createFormData(addedFile))
+        .then(() => store.dispatch(fileAdded(addedFile)))
     }
   }, [acceptedFiles])
 
@@ -37,10 +38,13 @@ function BasicDropzone() {
 }
 
 const DropzoneContainer = styled.div`
-  text-align: center;
-  border: 4px dotted ${colors.black};
   padding: 36px;
   margin: 30px;
+
+  text-align: center;
+
+  border: 4px dotted ${colors.black};
+
   cursor: pointer;
 `
 

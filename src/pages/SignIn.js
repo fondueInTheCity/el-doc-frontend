@@ -83,8 +83,6 @@ export const ImageContainer = styled.div`
     width: 0;
     height: 0;
 
-    opacity: 0;
-
     transition: opacity 0.5s ease-out, width 0.5s ease 0.5s,
       height 0.5s ease 0.5s;
   }
@@ -125,7 +123,6 @@ export const Label = styled.label`
   text-align: left;
 
   color: ${colors.black};
-  color: #000;
   border: 0;
 `
 
@@ -144,8 +141,7 @@ export const Input = styled.input`
   border-color: ${colors.black};
   color: ${colors.black};
   border-radius: 0;
-  background: #fff;
-  border: 1px solid #999;
+  background: ${colors.white};
 
   ::placeholder {
     color: ${colors.gray};

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import colors from '../../constants/colors'
 import userApi from '../../api/UserApi.js'
-import AuthService from '../../services/auth.service'
+import authApi from '../../api/AuthApi'
 
 const UserInfoTab = () => {
   const [userInfo, setUserInfo] = useState({
@@ -27,7 +27,7 @@ const UserInfoTab = () => {
   }
 
   const getProfileUser = () => {
-    const currentUser = AuthService.getCurrentUser()
+    const currentUser = authApi.getCurrentUser()
     if (currentUser) {
       getCurrentUserInfo(currentUser.id)
     }
