@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unknown-property */
 import { useState } from 'react'
 import styled from 'styled-components'
 import colors from '../constants/colors'
@@ -27,7 +26,7 @@ const SignIn = () => {
   return (
     <Container>
       <FormContainer>
-        <Title>Log In to FunDoc</Title>
+        <Title>Log In to Your Sign</Title>
         <Label>Email Address</Label>
         <Input
           name='email'
@@ -58,10 +57,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   height: 91vh;
-
-  @media screen and (max-width: 600px) {
-    flex-direction: column-reverse;
-  }
 `
 
 export const FormContainer = styled.div`
@@ -99,9 +94,6 @@ export const Title = styled.h2`
 `
 
 export const Button = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100px;
   height: 55px;
   margin-top: 20px;
@@ -118,9 +110,9 @@ export const Button = styled.button`
 `
 
 export const Label = styled.label`
-  display: block;
   margin: 0;
   padding: 0;
+  margin-top: 0.25em;
   margin-bottom: 0.25em;
 
   font-family: Minion W01, Times, Times New Roman, serif;

@@ -6,19 +6,17 @@ const CardContent = (props) => {
   const fileLink = `/file/${props.id}`
 
   return (
-    <Link to={fileLink}>
-      <Container id={'file-' + props.id}>
-        <DocumentImage
-          src='/images/contract-svgrepo-com.svg'
-          alt='img placeholder'
-        />
-        <DocumentName>{props.fileName}</DocumentName>
-      </Container>
-    </Link>
+    <LinkContainer id={'file-' + props.id} to={fileLink}>
+      <DocumentImage
+        src='/images/contract-svgrepo-com.svg'
+        alt='img placeholder'
+      />
+      <DocumentName>{props.fileName}</DocumentName>
+    </LinkContainer>
   )
 }
 
-const Container = styled.div`
+const LinkContainer = styled(Link)`
   display: flex;
   width: 100%;
   padding-right: 0;
@@ -31,6 +29,14 @@ const Container = styled.div`
   margin-bottom: 1em;
   margin-right: 0;
   padding: 1em;
+  margin: 10px;
+  background-color: ${colors.white};
+  text-decoration: none;
+  border: 1px solid rgb(0, 0, 0);
+
+  :visited {
+    color: ${colors.black};
+  }
   @media (min-width: 768px) {
     width: 10%;
     padding-right: 1em;
@@ -48,7 +54,16 @@ const DocumentImage = styled.img`
 `
 
 const DocumentName = styled.h3`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none;
+
   color: ${colors.black};
+
+  :visited {
+    color: ${colors.black};
+  }
 `
 
 export default CardContent

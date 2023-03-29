@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import '../App.css'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
@@ -7,10 +6,9 @@ import CardContent from './../components/CardContent'
 import { useEffect } from 'react'
 import { getUserFiles } from '../helpers/store/files.slice'
 import { store } from '../helpers/store'
-import FileInfoModal from '../components/FileInfoModal'
 import styled from 'styled-components'
 import colors from './../constants/colors'
-import Dropdown from '../components/Dropdown'
+import Dropdown from '../components/DropdownCheckbox'
 import Search from './../components/Search'
 
 const WorkDictionary = () => {
@@ -18,6 +16,14 @@ const WorkDictionary = () => {
   const auth = useSelector((x) => x.auth.entity)
 
   const [stateFilterOpen, setStateFilterOpen] = useState(false)
+
+  const stateSelects = [
+    { key: '23', text: 'All' },
+    { key: '24', text: 'Signed' },
+    { key: '25', text: 'Awaiting signing' },
+    { key: '26', text: 'Not signed' },
+    { key: '27', text: 'You have to sign' },
+  ]
 
   const handleOpen = () => {
     setStateFilterOpen(!stateFilterOpen)
@@ -32,15 +38,12 @@ const WorkDictionary = () => {
       <Container>
         <Dropdown
           open={stateFilterOpen}
-          trigger={<button onClick={handleOpen}>Dropdown</button>}
-          menu={[
-            { key: '23', text: 'Menu 1' },
-            { key: '24', text: 'Menu 2' },
-          ]}
+          trigger={<button onClick={handleOpen}>State</button>}
+          menu={stateSelects}
         ></Dropdown>
         <Dropdown
           open={stateFilterOpen}
-          trigger={<button onClick={handleOpen}>Dropdown</button>}
+          trigger={<button onClick={handleOpen}>Options</button>}
           menu={[
             { key: '23', text: 'Menu 1' },
             { key: '24', text: 'Menu 2' },
@@ -50,14 +53,11 @@ const WorkDictionary = () => {
       </Container>
       <div>
         <BasicDropzone />
-        <section className='container'>
-          <div className='card-flex'>
-            {files.map((file, index) => (
-              <CardContent fileName={file.name} id={file.id} key={index} />
-            ))}
-          </div>
-        </section>
-        <FileInfoModal />
+        <CardFlex>
+          {files.map((file, index) => (
+            <CardContent fileName={file.name} id={file.id} key={index} />
+          ))}
+        </CardFlex>
       </div>
     </>
   )
@@ -73,11 +73,13 @@ const Container = styled.header`
   border-bottom: 1px solid #ccc;
 `
 
-const StateDropdownButton = styled.button`
-  padding: 22px 21px;
-  border: 0;
-  background-color: ${colors.backgroundColor};
-  cursor: pointer;
+const CardFlex = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  width: 100%;
+  margin: 30px;
 `
 
 export default WorkDictionary

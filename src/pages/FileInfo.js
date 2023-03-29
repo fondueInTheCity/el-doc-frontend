@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { getFileInfoById } from '../api/FileApi'
 import { useState } from 'react'
-import colors from './../constants/colors'
+import colors from '../constants/colors'
 
 function FileInfo() {
   const [fileInfo, setFileInfo] = useState({})

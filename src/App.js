@@ -11,7 +11,7 @@ import WorkDictionary from './pages/WorkDictionary'
 import Profile from './pages/Profile'
 import Header from './components/Header'
 import { PrivateRoute } from './components/PrivateRoute'
-import FileInfo from './components/FileInfo'
+import FileInfo from './pages/FileInfo'
 
 const App = () => {
   return (

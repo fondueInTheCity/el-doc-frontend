@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <Container>
-      <Logo>FunDoc</Logo>
+      <img src='/images/Your sign.png' height='43px' />
       {isAuthenticated && (
         <NavigationContainer>
           <NavigationItem>
@@ -37,10 +37,6 @@ const Container = styled.header`
   border-bottom: 1px solid #ccc;
 `
 
-const Logo = styled.div`
-  color: ${colors.black};
-`
-
 const NavigationContainer = styled.ul`
   text-align: center;
   margin: 0;
@@ -63,7 +59,7 @@ const NavigationItem = styled.li`
     :hover {
       border-bottom-color: ${colors.black};
     }
-    :active {
+    &.active {
       border-bottom-color: ${colors.black};
     }
   }

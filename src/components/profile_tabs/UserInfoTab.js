@@ -43,9 +43,9 @@ const UserInfoTab = () => {
 
   return (
     <Container>
-      <ImageContainer src='/images/pdf.png' />
+      <ImageContainer src='/images/login_fon.jpg' />
       <UserInfoContainer>
-        <Title>Id: {userInfo?.id}</Title>
+        <Title>User info</Title>
         <Label>Email: </Label>
         <Input
           type='text'
@@ -86,9 +86,12 @@ const Container = styled.div`
 `
 
 const ImageContainer = styled.img`
+  width: 270px;
+  height: 270px;
+  margin: 68px;
+
   border-radius: 50%;
-  width: 20%;
-  height: 30%;
+
   @media screen and (max-width: 600px) {
     width: 100%;
   }
@@ -98,7 +101,7 @@ const UserInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  margin-top: 50px;
 
   height: 100%;
   width: 80%;
@@ -117,16 +120,16 @@ export const Button = styled.button`
   align-items: center;
   justify-content: center;
 
-  color: ${colors.black};
+  color: ${colors.white};
   border-color: ${colors.black};
-  background-color: ${colors.backgroundColor};
+  background-color: ${colors.black};
   width: 50%;
+  max-width: 150px;
   height: 55px;
   margin-bottom: 20px;
   cursor: pointer;
   :hover {
-    background: ${colors.black};
-    color: ${colors.backgroundColor};
+    background: ${colors.gray};
   }
 `
 
@@ -138,6 +141,7 @@ export const Input = styled.input`
   margin-bottom: 10px;
   height: 55px;
   width: 50%;
+  max-width: 350px;
   color: ${colors.black};
   background-color: ${colors.white};
   padding: 0px 3%;

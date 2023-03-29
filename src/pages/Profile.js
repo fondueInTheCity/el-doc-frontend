@@ -66,7 +66,7 @@ const Container = styled.div`
 
 const NavContainer = styled.ul`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: row;
   color: '#E8F0F2';
   flex-wrap: wrap;
